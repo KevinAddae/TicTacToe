@@ -51,14 +51,15 @@
             android:layout_marginTop="50dp">
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnTitle_singleP"
                 android:layout_width="365dp"
                 android:layout_height="90dp"
-                android:id="@+id/btnTitle_singleP"
                 android:layout_marginTop="25dp"
+                android:background="@drawable/main_btn"
+                android:onClick="singleBtnEvent"
                 android:text="Single Player"
                 android:textAllCaps="false"
-                android:textSize="30dp"
-                android:background="@drawable/main_btn"/>
+                android:textSize="30dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnTitle_MultiP"
