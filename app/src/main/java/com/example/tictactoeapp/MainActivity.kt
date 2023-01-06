@@ -13,6 +13,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    /**
+     * This is an Button event that is called when the single player button is pressed.
+     *  This will change the activity into the TicTacToeBoard activity in the single player format.
+     */
     fun singleBtnEvent(view: View) {
         var i = Intent(this, TicTacToeBoard::class.java)
         startActivity(i)
