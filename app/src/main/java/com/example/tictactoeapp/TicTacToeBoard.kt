@@ -1,31 +1,43 @@
 package com.example.tictactoeapp
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.drawable.Drawable
-import android.media.Image
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CpuUsageInfo
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 
-lateinit var topL: ImageView
-lateinit var topM: ImageView
-lateinit var topR: ImageView
-lateinit var midL: ImageView
-lateinit var mid: ImageView
-lateinit var midR: ImageView
-lateinit var botL: ImageView
-lateinit var botM: ImageView
-lateinit var botR: ImageView
-lateinit var winner: TextView
-lateinit var bgTopL: LinearLayout
-var pos: ArrayList<ImageView> = ArrayList()
+
 
 class TicTacToeBoard : AppCompatActivity() {
+
+    private lateinit var topL: ImageView
+    private lateinit var topM: ImageView
+    private lateinit var topR: ImageView
+    private lateinit var midL: ImageView
+    private lateinit var mid: ImageView
+    private lateinit var midR: ImageView
+    lateinit var botL: ImageView
+    lateinit var botM: ImageView
+    lateinit var botR: ImageView
+
+    lateinit var winner: TextView
+
+    private lateinit var bgTopL: LinearLayout
+    private lateinit var bgTopM: LinearLayout
+    private lateinit var bgTopR: LinearLayout
+    private lateinit var bgMidL: LinearLayout
+    private lateinit var bgMid: LinearLayout
+    private lateinit var bgMidR: LinearLayout
+    private lateinit var bgBotL: LinearLayout
+    private lateinit var bgBotMid: LinearLayout
+    private lateinit var bgBotR: LinearLayout
+    var pos: ArrayList<ImageView> = ArrayList()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tic_tac_toe_board)
@@ -41,7 +53,15 @@ class TicTacToeBoard : AppCompatActivity() {
 
         //Sets up the linear layout
         bgTopL = findViewById(R.id.bg_topL)
-
+        bgTopM = findViewById(R.id.bg_topM)
+        bgTopR = findViewById(R.id.bg_topR)
+        bgMidL = findViewById(R.id.bg_midL)
+        bgMid = findViewById(R.id.bg_mid)
+        bgMidR = findViewById(R.id.bg_midR)
+        bgBotL = findViewById(R.id.bg_botL)
+        bgBotMid = findViewById(R.id.bg_botM)
+        bgBotR = findViewById(R.id.bg_botR
+        )
         winner = findViewById(R.id.board_resultMsg)
 
         pos.add(topL)
@@ -53,15 +73,18 @@ class TicTacToeBoard : AppCompatActivity() {
         pos.add(botL)
         pos.add(botM)
         pos.add(botR)
+
+
     }
 
     fun homeBtnEvent (view:View) {
-        var i = Intent(this,MainActivity::class.java)
+        val i = Intent(this,MainActivity::class.java)
         startActivity(i)
     }
 
     fun playAgainEvent (view: View) {
-
+        val i = Intent(this,TicTacToeBoard::class.java)
+        startActivity(i)
     }
 
     fun placePosEvent(view:View) {
@@ -117,9 +140,12 @@ class TicTacToeBoard : AppCompatActivity() {
                 pos.remove(botR)
             }
         }
+        //checks winner after user's turn
         checkWinner()
-
+        // allows the cpu to act
         cpuAction()
+        //checks winner after cpu's turn
+        checkWinner()
 
     }
 
@@ -133,12 +159,73 @@ class TicTacToeBoard : AppCompatActivity() {
 
     }
     private fun checkWinner(){
-        if(topL.tag == "p1" && topM.tag == "p1" && topR.tag == "p1"){
-            winner.text= "The Winner is "
+        if(topL.tag == topM.tag && topL.tag == topR.tag && topL.tag != null) {
+            bgTopL.setBackgroundColor(Color.GREEN)
+            bgTopM.setBackgroundColor(Color.GREEN)
+            bgTopR.setBackgroundColor(Color.GREEN)
+            if (topL.tag == "p1")
+            winner.text= "Player Wins "
+            else
+                winner.text = "Cpu Wins"
         }
-        else if (topL.tag == "p1" && midL.tag == "p1" && botL.tag == "p1"){
-            winner
+        else if (topL.tag == midL.tag  && botL.tag == topL.tag) {
+            bgTopL.setBackgroundColor(Color.GREEN)
+            bgMidL.setBackgroundColor(Color.GREEN)
+            bgBotL.setBackgroundColor(Color.GREEN)
+            if (topL.tag == "p1")
+                winner.text= "Player Wins "
+            else
+                winner.text = "Cpu Wins"
+        }
+        else if (topL.tag == mid.tag && topL.tag == botR.tag){
+            bgTopL.setBackgroundColor(Color.GREEN)
+            bgMid.setBackgroundColor(Color.GREEN)
+            bgBotR.setBackgroundColor(Color.GREEN)
+            if (topL.tag == "p1")
+                winner.text= "Player Wins "
+            else
+                winner.text = "Cpu Wins"
+        }
+        else if (midL.tag == mid.tag && midL.tag == midR.tag){
+            bgMidL.setBackgroundColor(Color.GREEN)
+            bgMid.setBackgroundColor(Color.GREEN)
+            bgMidR.setBackgroundColor(Color.GREEN)
+            if (topL.tag == "p1")
+                winner.text= "Player Wins "
+            else
+                winner.text = "Cpu Wins"
+        }
+        else if (botL.tag == botM.tag && botR.tag == botM.tag){
+            bgBotL.setBackgroundColor(Color.GREEN)
+            bgBotMid.setBackgroundColor(Color.GREEN)
+            bgBotR.setBackgroundColor(Color.GREEN)
+            if (topL.tag == "p1")
+                winner.text= "Player Wins "
+            else
+                winner.text = "Cpu Wins"
+
+        }
+        else if(topR.tag == mid.tag && botL.tag == mid.tag){
+            bgTopR.setBackgroundColor(Color.GREEN)
+            bgMid.setBackgroundColor(Color.GREEN)
+            bgBotL.setBackgroundColor(Color.GREEN)
+            if (topL.tag == "p1")
+                winner.text= "Player Wins "
+            else
+                winner.text = "Cpu Wins"
+
+        }
+        else if (topR.tag == midR.tag && midR.tag == botR.tag){
+            bgTopR.setBackgroundColor(Color.GREEN)
+            bgMidR.setBackgroundColor(Color.GREEN)
+            bgBotR.setBackgroundColor(Color.GREEN)
+            if (topL.tag == "p1")
+                winner.text= "Player Wins "
+            else
+                winner.text = "Cpu Wins"
         }
 
     }
+
+
 }
