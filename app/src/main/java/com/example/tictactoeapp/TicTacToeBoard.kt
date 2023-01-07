@@ -149,8 +149,8 @@ class TicTacToeBoard : AppCompatActivity() {
         }
         //checks winner after user's turn
         checkWinner()
-        // allows the cpu to act
-        cpuAction()
+        if (winner.text != "Player Wins ")
+            cpuAction() // allows the cpu to act
         //checks winner after cpu's turn
         checkWinner()
 
@@ -228,6 +228,15 @@ class TicTacToeBoard : AppCompatActivity() {
             bgMidR.setBackgroundColor(Color.GREEN)
             bgBotR.setBackgroundColor(Color.GREEN)
             if (topR.tag == "p1")
+                winner.text= "Player Wins "
+            else
+                winner.text = "Cpu Wins"
+        }
+        else if (topM.tag == mid.tag && mid.tag == botM.tag && topM.tag != null) {
+            bgTopM.setBackgroundColor(Color.GREEN)
+            bgMid.setBackgroundColor(Color.GREEN)
+            bgBotMid.setBackgroundColor(Color.GREEN)
+            if (topM.tag == "p1")
                 winner.text= "Player Wins "
             else
                 winner.text = "Cpu Wins"
