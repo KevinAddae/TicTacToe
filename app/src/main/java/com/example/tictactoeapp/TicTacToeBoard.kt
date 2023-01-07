@@ -1,5 +1,6 @@
 package com.example.tictactoeapp
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -113,31 +114,37 @@ class TicTacToeBoard : AppCompatActivity() {
                 midL.setImageResource(R.drawable.circle_player)
                 midL.setOnClickListener(null)
                 pos.remove(midL)
+                midL.tag = "p1"
             }
             R.id.board_mid -> {
                 mid.setImageResource(R.drawable.circle_player)
                 mid.setOnClickListener(null)
                 pos.remove(mid)
+                mid.tag = "p1"
             }
             R.id.board_midRight -> {
                 midR.setImageResource(R.drawable.circle_player)
                 midR.setOnClickListener(null)
                 pos.remove(midR)
+                midR.tag = "p1"
             }
             R.id.board_botLeft -> {
                 botL.setImageResource(R.drawable.circle_player)
                 botL.setOnClickListener(null)
                 pos.remove(botL)
+                botL.tag = "p1"
             }
             R.id.board_botMid -> {
                 botM.setImageResource(R.drawable.circle_player)
                 botM.setOnClickListener(null)
                 pos.remove(botM)
+                botM.tag = "p1"
             }
             R.id.board_botRight -> {
                 botR.setImageResource(R.drawable.circle_player)
                 botR.setOnClickListener(null)
                 pos.remove(botR)
+                botR.tag = "p1"
             }
         }
         //checks winner after user's turn
@@ -158,6 +165,7 @@ class TicTacToeBoard : AppCompatActivity() {
         pos.removeAt(0)
 
     }
+    @SuppressLint("SetTextI18n")
     private fun checkWinner(){
         if(topL.tag == topM.tag && topL.tag == topR.tag && topL.tag != null) {
             bgTopL.setBackgroundColor(Color.GREEN)
@@ -168,7 +176,7 @@ class TicTacToeBoard : AppCompatActivity() {
             else
                 winner.text = "Cpu Wins"
         }
-        else if (topL.tag == midL.tag  && botL.tag == topL.tag) {
+        else if (topL.tag == midL.tag  && botL.tag == topL.tag && topL.tag != null) {
             bgTopL.setBackgroundColor(Color.GREEN)
             bgMidL.setBackgroundColor(Color.GREEN)
             bgBotL.setBackgroundColor(Color.GREEN)
@@ -177,7 +185,7 @@ class TicTacToeBoard : AppCompatActivity() {
             else
                 winner.text = "Cpu Wins"
         }
-        else if (topL.tag == mid.tag && topL.tag == botR.tag){
+        else if (topL.tag == mid.tag && topL.tag == botR.tag && topL.tag != null){
             bgTopL.setBackgroundColor(Color.GREEN)
             bgMid.setBackgroundColor(Color.GREEN)
             bgBotR.setBackgroundColor(Color.GREEN)
@@ -186,40 +194,40 @@ class TicTacToeBoard : AppCompatActivity() {
             else
                 winner.text = "Cpu Wins"
         }
-        else if (midL.tag == mid.tag && midL.tag == midR.tag){
+        else if (midL.tag == mid.tag && midL.tag == midR.tag && midL.tag != null){
             bgMidL.setBackgroundColor(Color.GREEN)
             bgMid.setBackgroundColor(Color.GREEN)
             bgMidR.setBackgroundColor(Color.GREEN)
-            if (topL.tag == "p1")
+            if (midL.tag == "p1")
                 winner.text= "Player Wins "
             else
                 winner.text = "Cpu Wins"
         }
-        else if (botL.tag == botM.tag && botR.tag == botM.tag){
+        else if (botL.tag == botM.tag && botR.tag == botM.tag && botL.tag != null){
             bgBotL.setBackgroundColor(Color.GREEN)
             bgBotMid.setBackgroundColor(Color.GREEN)
             bgBotR.setBackgroundColor(Color.GREEN)
-            if (topL.tag == "p1")
+            if (botL.tag == "p1")
                 winner.text= "Player Wins "
             else
                 winner.text = "Cpu Wins"
 
         }
-        else if(topR.tag == mid.tag && botL.tag == mid.tag){
+        else if(topR.tag == mid.tag && botL.tag == mid.tag && topR.tag != null){
             bgTopR.setBackgroundColor(Color.GREEN)
             bgMid.setBackgroundColor(Color.GREEN)
             bgBotL.setBackgroundColor(Color.GREEN)
-            if (topL.tag == "p1")
+            if (topR.tag == "p1")
                 winner.text= "Player Wins "
             else
                 winner.text = "Cpu Wins"
 
         }
-        else if (topR.tag == midR.tag && midR.tag == botR.tag){
+        else if (topR.tag == midR.tag && midR.tag == botR.tag && topR.tag != null){
             bgTopR.setBackgroundColor(Color.GREEN)
             bgMidR.setBackgroundColor(Color.GREEN)
             bgBotR.setBackgroundColor(Color.GREEN)
-            if (topL.tag == "p1")
+            if (topR.tag == "p1")
                 winner.text= "Player Wins "
             else
                 winner.text = "Cpu Wins"
