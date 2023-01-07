@@ -9,6 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/board_resultMsg"
+        android:textSize="40sp"
+        android:layout_marginStart="80dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,9 +24,9 @@
             android:paddingLeft="10dp">
 
             <LinearLayout
+                android:id="@+id/bg_topL"
                 android:layout_width="125dp"
-                android:layout_height="125dp"
-                android:background="@color/teal_200">
+                android:layout_height="125dp">
 
                 <ImageView
                     android:id="@+id/board_topLeft"
@@ -37,7 +43,7 @@
             <LinearLayout
                 android:layout_width="125dp"
                 android:layout_height="125dp"
-                android:background="#43CEF9">
+                android:id="@+id/bg_topM">
 
                 <ImageView
                     android:id="@+id/board_topMiddle"
@@ -54,7 +60,7 @@
             <LinearLayout
                 android:layout_width="125dp"
                 android:layout_height="125dp"
-                android:background="@color/purple_200">
+                android:id="@+id/bg_topR">
 
                 <ImageView
                     android:id="@+id/board_topRight"
@@ -79,7 +85,7 @@
             <LinearLayout
                 android:layout_width="125dp"
                 android:layout_height="125dp"
-                android:background="#43CEF9">
+                android:id="@+id/bg_midL">
 
                 <ImageView
                     android:id="@+id/board_midLeft"
@@ -96,7 +102,7 @@
             <LinearLayout
                 android:layout_width="125dp"
                 android:layout_height="125dp"
-                android:background="@color/teal_200">
+                android:id="@+id/bg_mid">
 
                 <ImageView
                     android:id="@+id/board_mid"
@@ -114,7 +120,7 @@
             <LinearLayout
                 android:layout_width="125dp"
                 android:layout_height="125dp"
-                android:background="@color/purple_200">
+                android:id="@+id/bg_midR">
 
                 <ImageView
                     android:id="@+id/board_midRight"
@@ -142,7 +148,7 @@
             <LinearLayout
                 android:layout_width="125dp"
                 android:layout_height="125dp"
-                android:background="#43CEF9">
+                android:id="@+id/bg_botL">
 
                 <ImageView
                     android:id="@+id/board_botLeft"
@@ -159,7 +165,7 @@
             <LinearLayout
                 android:layout_width="125dp"
                 android:layout_height="125dp"
-                android:background="@color/teal_200">
+                android:id="@+id/bg_botM">
 
                 <ImageView
                     android:id="@+id/board_botMid"
@@ -176,7 +182,7 @@
             <LinearLayout
                 android:layout_width="125dp"
                 android:layout_height="125dp"
-                android:background="@color/purple_200">
+                android:id="@+id/bg_botR">
 
                 <ImageView
                     android:id="@+id/board_botRight"
@@ -200,6 +206,7 @@
                 android:layout_height="65dp"
                 android:layout_marginStart="40dp"
                 android:text="Play Again"
+                android:onClick="playAgainEvent"
                 android:textAllCaps="false"
                 android:textSize="20sp"
                 android:background="@drawable/main_btn"/>
