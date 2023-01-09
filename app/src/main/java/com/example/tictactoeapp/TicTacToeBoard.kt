@@ -96,7 +96,6 @@ class TicTacToeBoard : AppCompatActivity() {
                 pos.remove(topL)
                 topL.tag = "p1"
 
-
             }
             R.id.board_topMiddle -> {
                 topM.setImageResource(R.drawable.circle_player)
@@ -156,21 +155,25 @@ class TicTacToeBoard : AppCompatActivity() {
 
     }
 
+
     private fun cpuAction() {
-        pos.shuffle()
-        pos[0].setImageResource(R.drawable.ic_baseline_close_24)
-        pos[0].setOnClickListener(null)
+        if (pos.size != 0) {
+            pos.shuffle()
+            pos[0].setImageResource(R.drawable.ic_baseline_close_24)
+            pos[0].setOnClickListener(null)
 
-        pos[0].tag = "cpu"
-        pos.removeAt(0)
-
+            pos[0].tag = "cpu"
+            pos.removeAt(0)
+        }
     }
     @SuppressLint("SetTextI18n")
     private fun checkWinner(){
+        // The condition for each win combination
         if(topL.tag == topM.tag && topL.tag == topR.tag && topL.tag != null) {
             bgTopL.setBackgroundColor(Color.GREEN)
             bgTopM.setBackgroundColor(Color.GREEN)
             bgTopR.setBackgroundColor(Color.GREEN)
+            // checks the assigned tag to determine winner
             if (topL.tag == "p1")
             winner.text= "Player Wins "
             else
@@ -240,7 +243,8 @@ class TicTacToeBoard : AppCompatActivity() {
                 winner.text= "Player Wins "
             else
                 winner.text = "Cpu Wins"
-        }
+        } else if (pos.size == 0) // The draw condition
+            winner.text = "It's a tie"
 
     }
 
