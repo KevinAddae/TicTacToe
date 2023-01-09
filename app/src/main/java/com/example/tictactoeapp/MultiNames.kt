@@ -40,8 +40,11 @@ class MultiNames : AppCompatActivity() {
         if (p1EditTxt.text.toString().isEmpty() || p2EditText.text.toString().isEmpty()) {
             errorTxt.text = "Please ensure you inputted a name in both fields!!"
         } else{
-
+            var b = Bundle()
+            b.putString("p1",p1EditTxt.text.toString())
+            b.putString("p2",p2EditText.text.toString())
             val i = Intent(this, MultiTicTacToeBoard::class.java)
+            i.putExtra("players",b)
             startActivity(i)
         }
     }
