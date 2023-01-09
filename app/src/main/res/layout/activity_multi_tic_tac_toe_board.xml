@@ -6,4 +6,224 @@
     android:layout_height="match_parent"
     tools:context=".MultiTicTacToeBoard">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/boardMulti_resultMsg"
+            android:textSize="40sp"
+            android:layout_marginStart="80dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="50sp"
+            android:paddingRight="10dp">
+
+            <LinearLayout
+                android:id="@+id/bg_multiTopL"
+                android:layout_width="125dp"
+                android:layout_height="125dp">
+
+                <ImageView
+                    android:id="@+id/board_multiTopLeft"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:onClick="placePosEvent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="8dp"
+                android:layout_height="match_parent"
+                android:background="@color/black" />
+
+            <LinearLayout
+                android:id="@+id/bg_multiTopM"
+                android:layout_width="125dp"
+                android:layout_height="125dp">
+
+                <ImageView
+                    android:id="@+id/board_multiTopMiddle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:onClick="placePosEvent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="8dp"
+                android:layout_height="match_parent"
+                android:background="@color/black" />
+
+            <LinearLayout
+                android:id="@+id/bg_multiTopR"
+                android:layout_width="125dp"
+                android:layout_height="125dp">
+
+                <ImageView
+                    android:id="@+id/board_multiTopRight"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:onClick="placePosEvent" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/black"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <LinearLayout
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:id="@+id/bg_multiMidL">
+
+                <ImageView
+                    android:id="@+id/board_multiMidLeft"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:onClick="placePosEvent"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="8dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"/>
+
+            <LinearLayout
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:id="@+id/bg_multiMid">
+
+                <ImageView
+                    android:id="@+id/board_multiMid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:onClick="placePosEvent"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="8dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"/>
+
+            <LinearLayout
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:id="@+id/bg_multiMidR">
+
+                <ImageView
+                    android:id="@+id/board_multiMidRight"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:onClick="placePosEvent"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/black"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp">
+
+            <LinearLayout
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:id="@+id/bg_multiBotL">
+
+                <ImageView
+                    android:id="@+id/board_multiBotLeft"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:onClick="placePosEvent"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="8dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"/>
+
+            <LinearLayout
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:id="@+id/bg_multiBotM">
+
+                <ImageView
+                    android:id="@+id/board_multiBotMid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:onClick="placePosEvent"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="8dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"/>
+
+            <LinearLayout
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:id="@+id/bg_multiBotR">
+
+                <ImageView
+                    android:id="@+id/board_multiBotRight"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:onClick="placePosEvent"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_multiPlayAgain"
+                android:layout_width="150dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="40dp"
+                android:text="Play Again"
+                android:onClick="playAgainEvent"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:background="@drawable/main_btn"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_multiHome"
+                android:layout_width="150dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="30dp"
+                android:background="@drawable/main_btn_multi"
+                android:onClick="homeBtnEvent"
+                android:text="Home"
+                android:textAllCaps="false"
+                android:textSize="20sp"/>
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
