@@ -106,56 +106,56 @@ class TicTacToeBoard : AppCompatActivity() {
     fun placePosEvent(view:View) {
         when (view.id) {
             R.id.board_topLeft -> {
-                topL.setImageResource(R.drawable.circle_player)
+                topL.setImageResource(R.drawable.ic_outline_circle_24)
                 topL.setOnClickListener(null)
                 pos.remove(topL)
                 topL.tag = "p1"
 
             }
             R.id.board_topMiddle -> {
-                topM.setImageResource(R.drawable.circle_player)
+                topM.setImageResource(R.drawable.ic_outline_circle_24)
                 topM.setOnClickListener(null)
                 pos.remove(topM)
                 topM.tag = "p1"
             }
             R.id.board_topRight -> {
-                topR.setImageResource(R.drawable.circle_player)
+                topR.setImageResource(R.drawable.ic_outline_circle_24)
                 topR.setOnClickListener(null)
                 pos.remove(topR)
                 topR.tag = "p1"
             }
             R.id.board_midLeft -> {
-                midL.setImageResource(R.drawable.circle_player)
+                midL.setImageResource(R.drawable.ic_outline_circle_24)
                 midL.setOnClickListener(null)
                 pos.remove(midL)
                 midL.tag = "p1"
             }
             R.id.board_mid -> {
-                mid.setImageResource(R.drawable.circle_player)
+                mid.setImageResource(R.drawable.ic_outline_circle_24)
                 mid.setOnClickListener(null)
                 pos.remove(mid)
                 mid.tag = "p1"
             }
             R.id.board_midRight -> {
-                midR.setImageResource(R.drawable.circle_player)
+                midR.setImageResource(R.drawable.ic_outline_circle_24)
                 midR.setOnClickListener(null)
                 pos.remove(midR)
                 midR.tag = "p1"
             }
             R.id.board_botLeft -> {
-                botL.setImageResource(R.drawable.circle_player)
+                botL.setImageResource(R.drawable.ic_outline_circle_24)
                 botL.setOnClickListener(null)
                 pos.remove(botL)
                 botL.tag = "p1"
             }
             R.id.board_botMid -> {
-                botM.setImageResource(R.drawable.circle_player)
+                botM.setImageResource(R.drawable.ic_outline_circle_24)
                 botM.setOnClickListener(null)
                 pos.remove(botM)
                 botM.tag = "p1"
             }
             R.id.board_botRight -> {
-                botR.setImageResource(R.drawable.circle_player)
+                botR.setImageResource(R.drawable.ic_outline_circle_24)
                 botR.setOnClickListener(null)
                 pos.remove(botR)
                 botR.tag = "p1"

@@ -21,4 +21,8 @@ class MainActivity : AppCompatActivity() {
         var i = Intent(this, TicTacToeBoard::class.java)
         startActivity(i)
     }
+    fun multiBtnEvent (view: View) {
+        var i = Intent(this, MultiNames::class.java)
+        startActivity(i)
+    }
 }
