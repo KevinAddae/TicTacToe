@@ -12,7 +12,10 @@ import android.widget.LinearLayout
 import android.widget.TextView
 
 
-
+/**
+ * The Activity aims to allow for the user to interact with the board allowing
+ * them to play the game.
+ */
 class TicTacToeBoard : AppCompatActivity() {
 
     private lateinit var topL: ImageView
@@ -42,6 +45,7 @@ class TicTacToeBoard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tic_tac_toe_board)
+        //sets up all the ImageViews.
         topL = findViewById(R.id.board_topLeft)
         topM = findViewById(R.id.board_topMiddle)
         topR = findViewById(R.id.board_topRight)
@@ -63,8 +67,9 @@ class TicTacToeBoard : AppCompatActivity() {
         bgBotMid = findViewById(R.id.bg_botM)
         bgBotR = findViewById(R.id.bg_botR
         )
+        //sets up the text view
         winner = findViewById(R.id.board_resultMsg)
-
+        // adds all the ImageViews to an ArrayList
         pos.add(topL)
         pos.add(topM)
         pos.add(topR)
@@ -78,16 +83,26 @@ class TicTacToeBoard : AppCompatActivity() {
 
     }
 
+    /**
+     * sends the user back to the home page
+     */
     fun homeBtnEvent (view:View) {
         val i = Intent(this,MainActivity::class.java)
         startActivity(i)
     }
 
+    /**
+     * connects to the play again button, reloads the page to initial state.
+     */
     fun playAgainEvent (view: View) {
         val i = Intent(this,TicTacToeBoard::class.java)
         startActivity(i)
     }
 
+    /**
+     * Allows for the user to interact with the board and removes the ability for the
+     * user to interact with the selected position.
+     */
     fun placePosEvent(view:View) {
         when (view.id) {
             R.id.board_topLeft -> {
@@ -155,7 +170,10 @@ class TicTacToeBoard : AppCompatActivity() {
 
     }
 
-
+    /**
+     * allows the cpu to act and removes the nullifies the users ability to interact
+     * with its choices. CpuAction uses the random determine the cpu action.
+     */
     private fun cpuAction() {
         if (pos.size != 0) {
             pos.shuffle()
@@ -166,6 +184,11 @@ class TicTacToeBoard : AppCompatActivity() {
             pos.removeAt(0)
         }
     }
+
+    /**
+     * Checks if there is a winner by comparing the current state of the board and
+     * seeing if it matches the winning combinations.
+     */
     @SuppressLint("SetTextI18n")
     private fun checkWinner(){
         // The condition for each win combination
