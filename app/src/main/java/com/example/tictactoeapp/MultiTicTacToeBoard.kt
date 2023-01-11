@@ -39,6 +39,8 @@ class MultiTicTacToeBoard : AppCompatActivity() {
     private lateinit var bgBotR: LinearLayout
     var pos: ArrayList<ImageView> = ArrayList()
 
+    var player1 = ""
+    var player2 = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,6 +79,9 @@ class MultiTicTacToeBoard : AppCompatActivity() {
         pos.add(botM)
         pos.add(botR)
 
+        var extra = intent.extras
+        player1 = extra?.getString("p1").toString()
+        winner.text = "$player1 turn"
 
     }
 
@@ -93,8 +98,8 @@ class MultiTicTacToeBoard : AppCompatActivity() {
      */
     fun playAgainEvent (view: View) {
         var extra = intent.extras
-        var player1 = extra?.getString("p1").toString()
-        var player2 = extra?.getString("p2").toString()
+        player1 = extra?.getString("p1").toString()
+        player2 = extra?.getString("p2").toString()
         val i = Intent(this,MultiTicTacToeBoard::class.java)
         i.putExtra("p1",player1)
         i.putExtra("p2",player2)
@@ -173,12 +178,11 @@ class MultiTicTacToeBoard : AppCompatActivity() {
      */
     @SuppressLint("SetTextI18n")
     private fun checkWinner(){
-        var player1 = ""
-        var player2 = ""
+
 
         var extra = intent.extras
         if (extra != null) {
-             player2 = extra.getString("p2").toString()
+            player2 = extra.getString("p2").toString()
             player1 = extra.getString("p1").toString()
         }
         // The condition for each win combination
@@ -262,14 +266,19 @@ class MultiTicTacToeBoard : AppCompatActivity() {
     }
 
     fun setSymbol(userPos: ImageView) {
+        var extra = intent.extras
+        player2 = extra!!.getString("p2").toString()
+        player1 = extra!!.getString("p1").toString()
         if (pos.size % 2 == 0){
             userPos.setImageResource(R.drawable.ic_baseline_close_24)
             userPos.tag = "p2"
+            winner.text = "$player1 turn"
 
         }
         else{
             userPos.setImageResource(R.drawable.ic_outline_circle_24)
             userPos.tag = "p1"
+            winner.text = "$player2 turn"
         }
     }
 }
