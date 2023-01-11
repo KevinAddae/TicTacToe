@@ -34,7 +34,7 @@
                     android:id="@+id/board_multiTopLeft"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:onClick="placePosEvent" />
+                    android:onClick="placePosEventMulti" />
             </LinearLayout>
 
             <LinearLayout
@@ -51,7 +51,7 @@
                     android:id="@+id/board_multiTopMiddle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:onClick="placePosEvent" />
+                    android:onClick="placePosEventMulti" />
             </LinearLayout>
 
             <LinearLayout
@@ -68,7 +68,7 @@
                     android:id="@+id/board_multiTopRight"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:onClick="placePosEvent" />
+                    android:onClick="placePosEventMulti" />
             </LinearLayout>
 
         </LinearLayout>
@@ -94,7 +94,7 @@
                     android:id="@+id/board_multiMidLeft"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:onClick="placePosEvent"/>
+                    android:onClick="placePosEventMulti"/>
             </LinearLayout>
 
             <LinearLayout
@@ -111,7 +111,7 @@
                     android:id="@+id/board_multiMid"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:onClick="placePosEvent"/>
+                    android:onClick="placePosEventMulti"/>
             </LinearLayout>
 
 
@@ -129,7 +129,7 @@
                     android:id="@+id/board_multiMidRight"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:onClick="placePosEvent"/>
+                    android:onClick="placePosEventMulti"/>
             </LinearLayout>
 
 
@@ -157,7 +157,7 @@
                     android:id="@+id/board_multiBotLeft"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:onClick="placePosEvent"/>
+                    android:onClick="placePosEventMulti"/>
             </LinearLayout>
 
             <LinearLayout
@@ -174,7 +174,7 @@
                     android:id="@+id/board_multiBotMid"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:onClick="placePosEvent"/>
+                    android:onClick="placePosEventMulti"/>
             </LinearLayout>
 
             <LinearLayout
@@ -191,7 +191,7 @@
                     android:id="@+id/board_multiBotRight"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:onClick="placePosEvent"/>
+                    android:onClick="placePosEventMulti"/>
             </LinearLayout>
 
 

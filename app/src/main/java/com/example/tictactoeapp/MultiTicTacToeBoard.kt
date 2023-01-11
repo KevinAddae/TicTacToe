@@ -5,10 +5,14 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+
+
+private const val TAG = "MyActivity"
 
 class MultiTicTacToeBoard : AppCompatActivity() {
 
@@ -88,7 +92,12 @@ class MultiTicTacToeBoard : AppCompatActivity() {
      * connects to the play again button, reloads the page to initial state.
      */
     fun playAgainEvent (view: View) {
-        val i = Intent(this,TicTacToeBoard::class.java)
+        var extra = intent.extras
+        var player1 = extra?.getString("p1").toString()
+        var player2 = extra?.getString("p2").toString()
+        val i = Intent(this,MultiTicTacToeBoard::class.java)
+        i.putExtra("p1",player1)
+        i.putExtra("p2",player2)
         startActivity(i)
     }
 
@@ -96,69 +105,63 @@ class MultiTicTacToeBoard : AppCompatActivity() {
      * Allows for the user to interact with the board and removes the ability for the
      * user to interact with the selected position.
      */
-    fun placePosEvent(view: View) {
+    fun placePosEventMulti(view: View) {
+        Log.i(TAG, "The code reaches here")
+
         when (view.id) {
-            R.id.board_topLeft -> {
+            R.id.board_multiTopLeft -> {
                 topL.setImageResource(R.drawable.ic_outline_circle_24)
-                topL.setOnClickListener(null)
+                setSymbol(topL)
+                //topL.setOnClickListener(null)
                 pos.remove(topL)
-                topL.tag = "p1"
 
             }
-            R.id.board_topMiddle -> {
-                topM.setImageResource(R.drawable.ic_outline_circle_24)
+            R.id.board_multiTopMiddle -> {
+                setSymbol(topM)
                 topM.setOnClickListener(null)
                 pos.remove(topM)
-                topM.tag = "p1"
             }
-            R.id.board_topRight -> {
-                topR.setImageResource(R.drawable.ic_outline_circle_24)
+            R.id.board_multiTopRight -> {
+                setSymbol(topR)
                 topR.setOnClickListener(null)
                 pos.remove(topR)
-                topR.tag = "p1"
             }
-            R.id.board_midLeft -> {
-                midL.setImageResource(R.drawable.ic_outline_circle_24)
+            R.id.board_multiMidLeft -> {
+                setSymbol(midL)
                 midL.setOnClickListener(null)
                 pos.remove(midL)
-                midL.tag = "p1"
             }
-            R.id.board_mid -> {
-                mid.setImageResource(R.drawable.ic_outline_circle_24)
+            R.id.board_multiMid -> {
+                setSymbol(mid)
                 mid.setOnClickListener(null)
                 pos.remove(mid)
-                mid.tag = "p1"
             }
-            R.id.board_midRight -> {
-                midR.setImageResource(R.drawable.ic_outline_circle_24)
+            R.id.board_multiMidRight -> {
+                setSymbol(midR)
                 midR.setOnClickListener(null)
                 pos.remove(midR)
-                midR.tag = "p1"
             }
-            R.id.board_botLeft -> {
-                botL.setImageResource(R.drawable.ic_outline_circle_24)
+            R.id.board_multiBotLeft -> {
+                setSymbol(botL)
                 botL.setOnClickListener(null)
                 pos.remove(botL)
-                botL.tag = "p1"
             }
-            R.id.board_botMid -> {
-                botM.setImageResource(R.drawable.ic_outline_circle_24)
+            R.id.board_multiBotMid -> {
+                setSymbol(botM)
                 botM.setOnClickListener(null)
                 pos.remove(botM)
-                botM.tag = "p1"
             }
-            R.id.board_botRight -> {
-                botR.setImageResource(R.drawable.ic_outline_circle_24)
+            R.id.board_multiBotRight -> {
+                setSymbol(botR)
                 botR.setOnClickListener(null)
                 pos.remove(botR)
-                botR.tag = "p1"
             }
         }
         //checks winner after user's turn
         checkWinner()
-        if (winner.text != "Player Wins ")
+        //if (winner.text != "Player Wins ")
         //checks winner after cpu's turn
-        checkWinner()
+        //checkWinner()
 
     }
 
@@ -170,6 +173,14 @@ class MultiTicTacToeBoard : AppCompatActivity() {
      */
     @SuppressLint("SetTextI18n")
     private fun checkWinner(){
+        var player1 = ""
+        var player2 = ""
+
+        var extra = intent.extras
+        if (extra != null) {
+             player2 = extra.getString("p2").toString()
+            player1 = extra.getString("p1").toString()
+        }
         // The condition for each win combination
         if(topL.tag == topM.tag && topL.tag == topR.tag && topL.tag != null) {
             bgTopL.setBackgroundColor(Color.GREEN)
@@ -177,45 +188,45 @@ class MultiTicTacToeBoard : AppCompatActivity() {
             bgTopR.setBackgroundColor(Color.GREEN)
             // checks the assigned tag to determine winner
             if (topL.tag == "p1")
-                winner.text= "Player Wins "
+                winner.text= "$player1 Wins "
             else
-                winner.text = "Cpu Wins"
+                winner.text = "$player2 Wins"
         }
         else if (topL.tag == midL.tag  && botL.tag == topL.tag && topL.tag != null) {
             bgTopL.setBackgroundColor(Color.GREEN)
             bgMidL.setBackgroundColor(Color.GREEN)
             bgBotL.setBackgroundColor(Color.GREEN)
             if (topL.tag == "p1")
-                winner.text= "Player Wins "
+                winner.text= "$player1 Wins "
             else
-                winner.text = "Cpu Wins"
+                winner.text = "$player2 Wins"
         }
         else if (topL.tag == mid.tag && topL.tag == botR.tag && topL.tag != null){
             bgTopL.setBackgroundColor(Color.GREEN)
             bgMid.setBackgroundColor(Color.GREEN)
             bgBotR.setBackgroundColor(Color.GREEN)
             if (topL.tag == "p1")
-                winner.text= "Player Wins "
+                winner.text= "$player1 Wins "
             else
-                winner.text = "Cpu Wins"
+                winner.text = "$player2 Wins"
         }
         else if (midL.tag == mid.tag && midL.tag == midR.tag && midL.tag != null){
             bgMidL.setBackgroundColor(Color.GREEN)
             bgMid.setBackgroundColor(Color.GREEN)
             bgMidR.setBackgroundColor(Color.GREEN)
             if (midL.tag == "p1")
-                winner.text= "Player Wins "
+                winner.text= "$player1 Wins "
             else
-                winner.text = "Cpu Wins"
+                winner.text = "$player2 Wins"
         }
         else if (botL.tag == botM.tag && botR.tag == botM.tag && botL.tag != null){
             bgBotL.setBackgroundColor(Color.GREEN)
             bgBotMid.setBackgroundColor(Color.GREEN)
             bgBotR.setBackgroundColor(Color.GREEN)
             if (botL.tag == "p1")
-                winner.text= "Player Wins "
+                winner.text= "$player1 Wins "
             else
-                winner.text = "Cpu Wins"
+                winner.text = "$player2 Wins"
 
         }
         else if(topR.tag == mid.tag && botL.tag == mid.tag && topR.tag != null){
@@ -223,9 +234,9 @@ class MultiTicTacToeBoard : AppCompatActivity() {
             bgMid.setBackgroundColor(Color.GREEN)
             bgBotL.setBackgroundColor(Color.GREEN)
             if (topR.tag == "p1")
-                winner.text= "Player Wins "
+                winner.text= "$player1 Wins "
             else
-                winner.text = "Cpu Wins"
+                winner.text = "$player2 Wins"
 
         }
         else if (topR.tag == midR.tag && midR.tag == botR.tag && topR.tag != null){
@@ -233,21 +244,32 @@ class MultiTicTacToeBoard : AppCompatActivity() {
             bgMidR.setBackgroundColor(Color.GREEN)
             bgBotR.setBackgroundColor(Color.GREEN)
             if (topR.tag == "p1")
-                winner.text= "Player Wins "
+                winner.text= "$player1 Wins "
             else
-                winner.text = "Cpu Wins"
+                winner.text = "$player2 Wins"
         }
         else if (topM.tag == mid.tag && mid.tag == botM.tag && topM.tag != null) {
             bgTopM.setBackgroundColor(Color.GREEN)
             bgMid.setBackgroundColor(Color.GREEN)
             bgBotMid.setBackgroundColor(Color.GREEN)
             if (topM.tag == "p1")
-                winner.text= "Player Wins "
+                winner.text= "$player1 Wins "
             else
-                winner.text = "Cpu Wins"
+                winner.text = "$player2 Wins"
         } else if (pos.size == 0) // The draw condition
             winner.text = "It's a tie"
 
     }
 
+    fun setSymbol(userPos: ImageView) {
+        if (pos.size % 2 == 0){
+            userPos.setImageResource(R.drawable.ic_baseline_close_24)
+            userPos.tag = "p2"
+
+        }
+        else{
+            userPos.setImageResource(R.drawable.ic_outline_circle_24)
+            userPos.tag = "p1"
+        }
+    }
 }
